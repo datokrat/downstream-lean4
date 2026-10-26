@@ -19,7 +19,7 @@ jobs:
     concurrency:
       group: build-post-export/batteries
       cancel-in-progress: false
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     permissions:
       actions: read
       contents: read
@@ -87,7 +87,7 @@ jobs:
     concurrency:
       group: build-post-export/mathlib4
       cancel-in-progress: false
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     permissions:
       actions: read
       contents: read
@@ -183,7 +183,7 @@ jobs:
     concurrency:
       group: build-post-export/cslib
       cancel-in-progress: false
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     permissions:
       actions: read
       contents: read
@@ -268,7 +268,7 @@ jobs:
     concurrency:
       group: build-post-export/verso
       cancel-in-progress: false
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     permissions:
       actions: read
       contents: read

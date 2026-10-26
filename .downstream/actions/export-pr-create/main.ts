@@ -428,6 +428,7 @@ async function createExportPr(
     head_repo: config.prRepo.fullName,
     title: prTitle,
     body,
+    maintainer_can_modify: false,
   });
 
   core.notice(`Created export PR #${data.number}: ${data.html_url}`);

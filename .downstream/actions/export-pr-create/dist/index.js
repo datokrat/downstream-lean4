@@ -25452,7 +25452,8 @@ downstream-sha: ${buildReport.commit_sha}`;
     // Required for cross-repo PRs when both repos have the same owner.
     head_repo: config.prRepo.fullName,
     title: prTitle,
-    body
+    body,
+    maintainer_can_modify: false
   });
   notice(`Created export PR #${data.number}: ${data.html_url}`);
   return data.number;

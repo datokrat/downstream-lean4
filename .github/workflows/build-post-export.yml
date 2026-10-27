@@ -12,10 +12,14 @@ defaults:
 jobs:
   batteries:
     if: |
-      ${{ !contains(github.event.workflow_run.head_commit.message, 'skip-checks: true') &&
-      github.event.workflow_run.conclusion != 'cancelled' &&
-      github.event.workflow_run.event == 'push' &&
-      github.event.workflow_run.head_branch == 'master' }}
+      ${{ true
+      && github.event.workflow_run.head_repository.full_name == github.repository
+      && github.event.workflow_run.path == '.github/workflows/build.yml'
+      && github.event.workflow_run.event == 'push'
+      && github.event.workflow_run.head_branch == 'master'
+      && github.event.workflow_run.conclusion != 'cancelled'
+      && !contains(github.event.workflow_run.head_commit.message, 'skip-checks: true')
+      }}
     concurrency:
       group: build-post-export/batteries
       cancel-in-progress: false
@@ -80,10 +84,14 @@ jobs:
 
   mathlib4:
     if: |
-      ${{ !contains(github.event.workflow_run.head_commit.message, 'skip-checks: true') &&
-      github.event.workflow_run.conclusion != 'cancelled' &&
-      github.event.workflow_run.event == 'push' &&
-      github.event.workflow_run.head_branch == 'master' }}
+      ${{ true
+      && github.event.workflow_run.head_repository.full_name == github.repository
+      && github.event.workflow_run.path == '.github/workflows/build.yml'
+      && github.event.workflow_run.event == 'push'
+      && github.event.workflow_run.head_branch == 'master'
+      && github.event.workflow_run.conclusion != 'cancelled'
+      && !contains(github.event.workflow_run.head_commit.message, 'skip-checks: true')
+      }}
     concurrency:
       group: build-post-export/mathlib4
       cancel-in-progress: false
@@ -181,10 +189,14 @@ jobs:
 
   cslib:
     if: |
-      ${{ !contains(github.event.workflow_run.head_commit.message, 'skip-checks: true') &&
-      github.event.workflow_run.conclusion != 'cancelled' &&
-      github.event.workflow_run.event == 'push' &&
-      github.event.workflow_run.head_branch == 'master' }}
+      ${{ true
+      && github.event.workflow_run.head_repository.full_name == github.repository
+      && github.event.workflow_run.path == '.github/workflows/build.yml'
+      && github.event.workflow_run.event == 'push'
+      && github.event.workflow_run.head_branch == 'master'
+      && github.event.workflow_run.conclusion != 'cancelled'
+      && !contains(github.event.workflow_run.head_commit.message, 'skip-checks: true')
+      }}
     concurrency:
       group: build-post-export/cslib
       cancel-in-progress: false
@@ -266,10 +278,14 @@ jobs:
 
   verso:
     if: |
-      ${{ !contains(github.event.workflow_run.head_commit.message, 'skip-checks: true') &&
-      github.event.workflow_run.conclusion != 'cancelled' &&
-      github.event.workflow_run.event == 'push' &&
-      github.event.workflow_run.head_branch == 'master' }}
+      ${{ true
+      && github.event.workflow_run.head_repository.full_name == github.repository
+      && github.event.workflow_run.path == '.github/workflows/build.yml'
+      && github.event.workflow_run.event == 'push'
+      && github.event.workflow_run.head_branch == 'master'
+      && github.event.workflow_run.conclusion != 'cancelled'
+      && !contains(github.event.workflow_run.head_commit.message, 'skip-checks: true')
+      }}
     concurrency:
       group: build-post-export/verso
       cancel-in-progress: false

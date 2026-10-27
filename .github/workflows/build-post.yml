@@ -64,9 +64,7 @@ jobs:
           TOOLCHAIN="$(cat "$RUNNER_TEMP/staging/.metadata/lean-toolchain")"
           .downstream/list.py built-commit | while IFS= read -r repo; do
             echo "::group::cache put-staged $repo"
-            pushd "built-commit/$repo"
             lake cache put-staged "$RUNNER_TEMP/staging/$repo" --rev "$REV" --scope "$TOOLCHAIN/$repo" || true
-            popd
             echo "::endgroup::"
           done
 

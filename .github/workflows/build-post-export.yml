@@ -155,6 +155,12 @@ jobs:
             chore: downstream-lean4 adaptations for ${{ steps.toolchain.outputs.toolchain }}
           update-toolchains: true
           update-manifests: true
+          lakefile-edits: |
+            ^(require "leanprover-community" / "batteries" @ git) "main"$ -> \1 "<batteries target_rev>"
+            ^(require "leanprover-community" / "Qq" @ git) "master"$ -> \1 "<quote4 target_rev>"
+            ^(require "leanprover-community" / "aesop" @ git) "master"$ -> \1 "<aesop target_rev>"
+            ^(require "leanprover-community" / "proofwidgets" @ git) "main"$ -> \1 "<ProofWidgets4 target_rev>"
+            ^(require "leanprover-community" / "plausible" @ git) "main"$ -> \1 "<plausible target_rev>"
 
       - name: Post message to Zulip
         if: ${{ fromJSON(steps.export-pr.outputs.pr-created) }}

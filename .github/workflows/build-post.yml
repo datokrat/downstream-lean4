@@ -349,6 +349,8 @@ jobs:
       && !contains(github.event.workflow_run.head_commit.message, 'skip-checks: true')
       }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Create GitHub App token
         uses: actions/create-github-app-token@v3

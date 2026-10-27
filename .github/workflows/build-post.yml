@@ -59,9 +59,9 @@ jobs:
       - name: Upload artifacts to cache
         env:
           LAKE_CACHE_KEY: ${{ secrets.LAKE_CACHE_KEY }}
+          REV: ${{ github.event.workflow_run.head_sha }}
         run: |
-          REV="$(cat "$RUNNER_TEMP/staging/.metadata/rev")"
-          TOOLCHAIN="$(cat "$RUNNER_TEMP/staging/.metadata/lean-toolchain")"
+          TOOLCHAIN="$(cat built-commit/lean-toolchain)"
           .downstream/list.py built-commit | while IFS= read -r repo; do
             echo "::group::cache put-staged $repo"
             lake cache put-staged "$RUNNER_TEMP/staging/$repo" --rev "$REV" --scope "$TOOLCHAIN/$repo" || true
